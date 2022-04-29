@@ -44,7 +44,7 @@ while True:
 
     # Keep contours with area > 1000
     for contour in cnts:
-        if cv2.contourArea(contour) < 1000:
+        if cv2.contourArea(contour) < 10000:
             continue
         # Object detected
         status = 1
@@ -58,6 +58,8 @@ while True:
     if status_list[-1] == 0 and status_list[-2] == 1:
         times.append(datetime.now())
         pass
+
+    status_list = status_list[-2:]
 
     cv2.imshow("Gray Frame", gray)
     cv2.imshow("Delta Frame", delta_frame)
